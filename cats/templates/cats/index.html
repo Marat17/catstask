@@ -1,0 +1,32 @@
+<section id="hero" class="container">
+    <header>
+      <h2>You can see your cats here</h2>
+    </header>
+</section>
+</div>
+</div>
+				<div id="footer-wrapper">
+					<div id="footer" class="container">
+    <h1>Current user: {{ request.user }}</h1>
+    <h2>Your cats: </h2>
+
+<div>
+    {% if cats %}
+                <ul>
+                Name | Age | Breed | Hair color |
+            <hr>
+                </ul>
+
+
+            <ul>
+            {% for cat in cats %}
+                <li>{{ cat.name }} | {{ cat.age }} | {{ cat.breed }} | {{ cat.hair_color }} |</li>
+            <hr>{% endfor %}
+                </ul>
+    {% else %}
+	<strong>You haven't placed any cats here yet</strong>
+	{% endif %}
+
+</div>
+                    </div>
+                </div>
