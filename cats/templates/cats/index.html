@@ -1,5 +1,6 @@
 <section id="hero" class="container">
     <header>
+        {% if user.is_authenticated %}
       <h2>You can see your cats here</h2>
     </header>
 </section>
@@ -8,6 +9,7 @@
 				<div id="footer-wrapper">
 					<div id="footer" class="container">
     <h1>Current user: {{ request.user }}</h1>
+                        <a href="cats/create/">Create a cat</a>
     <h2>Your cats: </h2>
 
 <div>
@@ -21,12 +23,16 @@
             <ul>
             {% for cat in cats %}
                 <li>{{ cat.name }} | {{ cat.age }} | {{ cat.breed }} | {{ cat.hair_color }} |</li>
+                <td><a href="cats/edit/{{cat.id}}">Edit</a></td> | <a href="cats/delete/{{cat.id}}">Delete</a></td>
             <hr>{% endfor %}
                 </ul>
     {% else %}
 	<strong>You haven't placed any cats here yet</strong>
 	{% endif %}
-
+    {% else %}
+    <h2>You have to <a href="{% url 'cats/login'%}">Log In</a> or
+        <a href="{% url 'cats/register'%}">Create an account</a> to see your cats</h2>
+    {% endif %}
 </div>
                     </div>
                 </div>

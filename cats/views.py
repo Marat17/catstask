@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.urls import reverse
 from cats.models import Cat
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.views.generic.base import View
 from django.views.generic.edit import FormView
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.contrib.auth import login, logout
+from .forms import CatCreateForm
 
 
 # Create your views here.
@@ -17,6 +19,46 @@ def show_my_cats(request):
         context['cats'] = None
 
     return render(request, 'cats/index.html', context)
+
+def cat_create(request):
+    if request.method == 'POST':
+        form = CatCreateForm(request.POST)
+        if form.is_valid():
+            Cat = form.save()
+            Cat.user = request.user
+            Cat.save()
+
+        return redirect('/')
+
+    else:
+        form = CatCreateForm
+    return render(request, 'cats/create.html',
+                  {'form': form})
+
+
+def cat_edit(request, id):
+    try:
+        cat = Cat.objects.get(id=id)
+
+        if request.method == "POST":
+            cat.name = request.POST.get("name")
+            cat.age = request.POST.get("age")
+            cat.breed = request.POST.get("breed")
+            cat.hair_color = request.POST.get("hair_color")
+            cat.save()
+            return HttpResponseRedirect("/")
+        else:
+            return render(request, "cats/altercat.html", {"cat": cat})
+    except Cat.DoesNotExist:
+        return HttpResponseNotFound("Cat not found")
+
+def cat_delete(request, id):
+    try:
+        cat = Cat.objects.get(id=id)
+        cat.delete()
+        return HttpResponseRedirect("/")
+    except Cat.DoesNotExist:
+        return HttpResponseNotFound("Cat not found")
 
 
 class RegisterFormView(FormView):
