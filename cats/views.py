@@ -7,16 +7,23 @@ from django.views.generic.edit import FormView
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.contrib.auth import login, logout
 from .forms import CatCreateForm
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 def show_my_cats(request):
     context = {}
-    try:
-        cats = Cat.objects.filter(user=request.user)
-        context['cats'] = cats
-    except Cat.DoesNotExist:
-        context['cats'] = None
+    if request.user.is_active:
+        try:
+            if User.is_authenticated:
+                cats = Cat.objects.filter(user=request.user)
+                context['cats'] = cats
+
+        except Cat.DoesNotExist:
+            context['cats'] = None
+    else:
+        pass
+
 
     return render(request, 'cats/index.html', context)
 
