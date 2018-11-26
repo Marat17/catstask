@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import sys
-from urllib.parse import urlparse
-import urllib.parse
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -89,13 +86,14 @@ WSGI_APPLICATION = 'catstask.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # Register database schemes in URLs.
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysql://b516d240faa43e:e7ca8ffd@us-cdbr-iron-east-01.cleardb.net/heroku_61b9131ca3b0102?reconnect=true'
-    }
-}
 
+DATABASES['default'] = {
+    'ENGINE': 'django.db.backends.mysql',
+    'USER': 'b516d240faa43e',
+    'NAME': 'heroku_61b9131ca3b0102',
+    'PASSWORD': os.environ.get('DBP'),
+    'OPTIONS': {'ssl': {'ca':'/path/to/ca-cert.pem', 'cert':'/path/to/cert.pem', 'key':'/path/to/key.pem'},},
+}
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
