@@ -88,10 +88,8 @@ WSGI_APPLICATION = 'catstask.wsgi.application'
 # Register database schemes in URLs.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'catproject',
-        'USER': 'django',
-        'PASSWORD': '82134',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 # Password validation
