@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'catstask.wsgi.application'
 # Register database schemes in URLs.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mysql://b516d240faa43e:e7ca8ffd@us-cdbr-iron-east-01.cleardb.net/heroku_61b9131ca3b0102?reconnect=true'
     }
 }
