@@ -87,14 +87,15 @@ WSGI_APPLICATION = 'catstask.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # Register database schemes in URLs.
 DATABASES = {
-    'default' : {
-    'ENGINE': 'django.db.backends.mysql',
-    'HOST': 'us-cdbr-east-04.cleardb.com',
-    'USER': 'b516d240faa43e',
-    'NAME': 'heroku_61b9131ca3b0102',
-    'PASSWORD': os.environ.get('DBP'),
-    'OPTIONS': {'ssl': {'ca': '\ssl\ca-cert.pem', 'cert': '\ssl\cert.pem', 'key': '\ssl\key.pem'}, },
-}
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
+    }
 }
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
