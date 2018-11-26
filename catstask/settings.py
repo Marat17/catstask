@@ -93,7 +93,7 @@ DATABASES = {
     'USER': 'b516d240faa43e',
     'NAME': 'heroku_61b9131ca3b0102',
     'PASSWORD': os.environ.get('DBP'),
-    'OPTIONS': {'ssl': {'ca': 'D:\WorkSpace\catstask\ssl\cleardb-ca.pem', 'cert': 'D:\WorkSpace\catstask\ssl\b516d240faa43e-cert.pem', 'key': 'D:\WorkSpace\catstask\ssl\b516d240faa43e-key.pem'}, },
+    'OPTIONS': {'ssl': {'ca': '\ssl\cleardb-ca.pem', 'cert': '\ssl\b516d240faa43e-cert.pem', 'key': '\ssl\b516d240faa43e-key.pem'}, },
 }
 }
 # Password validation
