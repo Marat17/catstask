@@ -1,0 +1,1 @@
+web: gunicorn catstask.wsgi --log-file -
