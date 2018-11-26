@@ -89,8 +89,9 @@ WSGI_APPLICATION = 'catstask.wsgi.application'
 DATABASES = {
     'default' : {
     'ENGINE': 'django.db.backends.mysql',
-    'USER': 'django',
-    'NAME': 'b516d240faa43e',
+    'HOST': 'us-cdbr-east-04.cleardb.com',
+    'USER': 'b516d240faa43e',
+    'NAME': 'heroku_61b9131ca3b0102',
     'PASSWORD': os.environ.get('DBP'),
     'OPTIONS': {'ssl': {'ca': 'D:\WorkSpace\catstask\ssl\cleardb-ca.pem', 'cert': 'D:\WorkSpace\catstask\ssl\b516d240faa43e-cert.pem', 'key': 'D:\WorkSpace\catstask\ssl\b516d240faa43e-key.pem'}, },
 }
