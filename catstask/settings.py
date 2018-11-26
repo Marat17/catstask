@@ -92,7 +92,7 @@ DATABASES = {
     'HOST': 'us-cdbr-iron-east-01.cleardb.net',
     'USER': 'b516d240faa43e',
     'NAME': 'heroku_61b9131ca3b0102',
-    'PASSWORD': 'e7ca8ffd',
+    'PASSWORD': "os.environ.get('DBP')",
 }
 }
 # Password validation
