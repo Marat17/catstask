@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import sys
 from urllib.parse import urlparse
+import urllib.parse
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -87,7 +88,8 @@ WSGI_APPLICATION = 'catstask.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-urlparse.uses_netloc.append('mysql')
+urllib.parse.uses_netloc.append("mysql")
+url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
