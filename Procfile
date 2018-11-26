@@ -1,1 +1,1 @@
-web: gunicorn catstask.wsgi --log-file -
+web: python app.py
