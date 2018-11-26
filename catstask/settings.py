@@ -87,6 +87,16 @@ WSGI_APPLICATION = 'catstask.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # Register database schemes in URLs.
 DATABASES = {
+    'default' : {
+    'ENGINE': 'django.db.backends.mysql',
+    'HOST': 'my-host-goes-here',
+    'USER': 'django',
+    'NAME': 'b516d240faa43e',
+    'PASSWORD': os.environ.get('DBP'),
+    'OPTIONS': {'ssl': {'ca': 'D:\WorkSpace\catstask\ssl\cleardb-ca.pem', 'cert': 'D:\WorkSpace\catstask\ssl\b516d240faa43e-cert.pem', 'key': 'D:\WorkSpace\catstask\ssl\b516d240faa43e-key.pem'}, },
+}
+}
+DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "django_deploy",
