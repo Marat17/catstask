@@ -90,7 +90,11 @@ WSGI_APPLICATION = 'catstask.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 urllib.parse.uses_netloc.append("mysql")
 url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
-
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.mysql',
+     }
+}
 try:
 
     # Check to make sure DATABASES is set in settings.py file.
@@ -107,7 +111,6 @@ try:
 
         # Update with environment configuration.
         DATABASES['default'].update({
-            'ENGINE': 'django.db.backends.mysql',
             'NAME': url.path[1:],
             'USER': url.username,
             'PASSWORD': url.password,
