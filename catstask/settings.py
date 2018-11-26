@@ -107,11 +107,10 @@ try:
 
         # Update with environment configuration.
         DATABASES['default'].update({
+            'ENGINE': 'django.db.backends.mysql',
             'NAME': url.path[1:],
             'USER': url.username,
             'PASSWORD': url.password,
-            'HOST': url.hostname,
-            'PORT': url.port,
         })
 
 
