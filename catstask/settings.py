@@ -25,7 +25,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'bs4f4k7owaxm6zr)7&rm4-#uhr6*#j95cehm9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'cryptic-dawn-70935.herokuapp.com',
+    '127.0.0.1',
+]
 
 
 # Application definition
